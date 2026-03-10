@@ -3,19 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VSW BUILDCON PVT LTD | Building Tomorrow's Landmarks</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>VSW BUILDCON PVT LTD | Building Dreams, Creating Reality</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0077b6; /* Vibrant Blue */
+            --primary-dark: #023e8a;
+            --dark: #001d3d;    /* Deep Indigo */
+            --light: #f4f9f9;   /* Soft base */
+            --white: #ffffff;
+            --accent: #00b4d8;  /* Electric highlight */
+            --wa-green: #25D366;
+            --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * { margin:0; padding:0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); overflow-x: hidden; background: var(--light); }
+        .container { width: 92%; max-width: 1200px; margin: auto; }
+
+        /* Elegant Glass Navigation */
+        .glass-nav { position: fixed; top: 0; width: 100%; padding: 18px 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.03); transition: all 0.4s ease; border-bottom: 1px solid rgba(255,255,255,0.3); }
+        .glass-nav.scrolled { padding: 12px 0; background: rgba(255,255,255,0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Montserrat'; font-weight: 800; font-size: 1.6rem; color: var(--dark); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary); }
+        
+        .desktop-menu { display: flex; list-style: none; gap: 30px; align-items: center; }
+        .desktop-menu a { position: relative; text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+        .desktop-menu a:hover { color: var(--primary); }
+        .desktop-menu a:not(.btn-outline)::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: var(--primary); transition: width 0.3s ease; }
+        .desktop-menu a:not(.btn-outline):hover::after { width: 100%; }
+        
+        .btn-outline { border: 2px solid var(--primary); padding: 10px 24px; border-radius: 8px; color: var(--primary) !important; transition: all 0.3s ease; display: inline-block; overflow: hidden; position: relative; z-index: 1; }
+        .btn-outline::before { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: var(--primary); transition: all 0.4s ease; z-index: -1; }
+        .btn-outline:hover::before { width: 100%; }
+        .btn-outline:hover { color: var(--white) !important; box-shadow: 0 5px 15px rgba(0,119,182,0.3); }
+
+        /* Hamburger Menu */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
+        .hamburger span { width: 28px; height: 2px; background-color: var(--dark); transition: 0.3s ease; border-radius: 2px; }
+
+        /* Animated Hero Section */
+        .hero { padding: 180px 0 100px; background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%); position: relative; overflow: hidden; }
+        .hero::after { content: ''; position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: var(--accent); border-radius: 50%; filter: blur(100px); opacity: 0.1; z-index: 0; }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+        
+        .badge { display: inline-block; padding: 8px 18px; background: rgba(0, 119, 182, 0.1); color: var(--primary); border-radius: 30px; font-weight: 700; font-size: 0.85rem; margin-bottom: 20px; border: 1px solid rgba(0, 119, 182, 0.2); }
+        .hero-text h1 { font-family: 'Montserrat'; font-size: clamp(2.8rem, 5vw, 4.2rem); line-height: 1.15; margin-bottom: 20px; color: var(--dark); }
+        .gradient-text { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 35px; color: #4a5568; max-width: 500px; }
+        
+        /* Floating Hero Image */
+        .hero-image-box { border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 29, 61, 0.15); animation: float 6s ease-in-out infinite; position: relative; }
+        .hero-image-box::before { content: ''; position: absolute; inset: 0; border-radius: 24px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5); z-index: 2; pointer-events: none; }
+        .hero-image-box img { width: 100%; height: auto; display: block; transform: scale(1.02); }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+
+        .btn-group { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .btn-vibrant { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; padding: 16px 36px; border-radius: 12px; text-decoration: none; font-weight: 600; box-shadow: 0 10px 20px rgba(0,119,182,0.25); transition: var(--transition); border: none; position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-vibrant::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: rgba(255,255,255,0.2); transform: rotate(45deg) translateY(-100%); transition: transform 0.6s ease; }
+        .btn-vibrant:hover::after { transform: rotate(45deg) translateY(100%); }
+        .btn-vibrant:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,119,182,0.4); }
+        
+        .btn-wa-hero { background: linear-gradient(135deg, var(--wa-green), #1ebc5a); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25); }
+        .btn-wa-hero:hover { box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
+
+        /* Elegant Marquee */
+        .marquee-container { background: var(--dark); color: #fff; padding: 24px 0; overflow: hidden; white-space: nowrap; border-top: 3px solid var(--primary); border-bottom: 3px solid var(--primary); }
+        .marquee-content { display: inline-block; animation: marqueeScroll 25s linear infinite; }
+        .marquee-content span { font-family: 'Montserrat'; font-weight: 700; font-size: 1.25rem; margin-right: 50px; letter-spacing: 1px; }
+        .marquee-content span i { color: var(--accent); font-style: normal; margin-right: 8px; }
+        @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* Section Header */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Montserrat'; font-size: 2.8rem; margin-bottom: 18px; color: var(--dark); }
+        .section-header h2 span { color: var(--primary); }
+        .section-header p { max-width: 650px; margin: 0 auto; color: #4a5568; line-height: 1.7; font-size: 1.1rem; }
+
+        /* Principles Grid - Hover Animations */
+        .principles { padding: 100px 0; background: var(--white); }
+        .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 35px; }
+        .p-card { background: var(--light); padding: 45px 35px; border-radius: 20px; border: 1px solid rgba(0,119,182,0.05); position: relative; overflow: hidden; transition: var(--transition); z-index: 1; }
+        .p-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--primary), var(--accent)); transition: var(--transition); z-index: -1; }
+        .p-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,29,61,0.06); background: var(--white); }
+        .p-card:hover::before { width: 100%; opacity: 0.03; }
+        .icon-wrapper { width: 60px; height: 60px; background: rgba(0, 119, 182, 0.1); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); font-size: 1.8rem; transition: var(--transition); }
+        .p-card:hover .icon-wrapper { background: var(--primary); color: var(--white); transform: scale(1.1) rotate(5deg); }
+        .p-card h3 { font-family: 'Montserrat'; margin-bottom: 15px; color: var(--dark); font-size: 1.3rem; }
+        .p-card p { line-height: 1.6; color: #4a5568; font-size: 0.95rem; }
+
+        /* Cinematic Projects Grid */
+        .projects { padding: 100px 0; background: var(--light); }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .project-card { border-radius: 24px; overflow: hidden; background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.06); transition: var(--transition); display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.02); position: relative; }
+        .project-card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(0,29,61,0.12); }
+        
+        .card-img-wrapper { position: relative; overflow: hidden; height: 260px; }
+        .project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .project-card:hover img { transform: scale(1.08); }
+        
+        .status { position: absolute; top: 20px; left: 20px; padding: 6px 14px; border-radius: 30px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .status.uc { background: #fff3cd; color: #856404; }
+        .status.pr { background: #d1ecf1; color: #0c5460; }
+        .status.c { background: #d4edda; color: #155724; }
+        .status.rm { background: #e2e8f0; color: #4a5568; }
+
+        .p-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; background: var(--white); position: relative; z-index: 2; }
+        .p-info h3 { font-family: 'Montserrat'; font-size: 1.5rem; margin-bottom: 8px; color: var(--dark); }
+        .specs { color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; }
+        .desc { color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+        
+        .card-btn { color: var(--primary); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.05); }
+        .card-btn span { transition: transform 0.3s; }
+        .project-card:hover .card-btn span { transform: translateX(5px); }
+        .card-btn:hover { color: var(--accent); }
+
+        /* Elegant Footer & Form */
+        footer { background: var(--dark); color: white; padding: 100px 0 40px; position: relative; overflow: hidden; }
+        footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+        .footer-grid-main { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 60px; align-items: start; position: relative; z-index: 1; }
+        .footer-info .logo { color: #fff; margin-bottom: 20px; display: inline-block; font-size: 1.8rem; }
+        .footer-info p { color: #a0aec0; line-height: 1.7; font-size: 0.95rem; margin-bottom: 20px; }
+        
+        .contact-form-box { background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
+        .contact-form-box h4 { font-family: 'Montserrat'; font-size: 1.5rem; margin-bottom: 25px; color: #fff; }
+        input, textarea { width: 100%; padding: 16px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; background: rgba(0,0,0,0.2); color: white; font-family: 'Inter', sans-serif; transition: 0.3s; font-size: 0.95rem; }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); background: rgba(0,0,0,0.4); box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.1); }
+        textarea { height: 120px; resize: none; }
+        
+        .form-status { margin-top: 15px; font-size: 0.9rem; display: none; padding: 12px; border-radius: 8px; font-weight: 500; }
+        .form-status.success { display: block; background: rgba(40,167,69,0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
+        .form-status.error { display: block; background: rgba(220,53,69,0.15); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.3); }
+
+        .quick-contact h4 { font-family: 'Montserrat'; font-size: 1.5rem; margin-bottom: 25px; color: #fff; }
+        .contact-link { display: flex; align-items: center; gap: 15px; color: #a0aec0; text-decoration: none; margin-bottom: 20px; font-size: 1rem; transition: 0.3s; }
+        .contact-link div { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: 0.3s; }
+        .contact-link:hover div { background: var(--primary); color: #fff; transform: scale(1.1); }
+        .contact-link:hover { color: var(--white); }
+
+        .copyright { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #718096; font-size: 0.9rem; }
+
+        /* Floating WhatsApp Button (Desktop) */
+        .floating-wa { position: fixed; bottom: 30px; right: 30px; background-color: var(--wa-green); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 1000; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .floating-wa:hover { transform: scale(1.15) rotate(-5deg); }
+        .floating-wa svg { width: 35px; height: 35px; fill: white; }
+
+        /* Mobile Action Bar */
+        .mobile-cta { display: none; }
+
+        /* Dynamic Animations */
+        .hidden-reveal { opacity: 0; transform: translateY(40px) scale(0.98); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .show-reveal { opacity: 1; transform: translateY(0) scale(1); }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-text p { margin: 0 auto 30px; }
+            .btn-group { justify-content: center; }
+            .hero-image-box { max-width: 600px; margin: 0 auto; }
+            .footer-grid-main { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+            .contact-link { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            .glass-nav { padding: 15px 0; }
+            .hamburger { display: flex; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+            
+            .desktop-menu { position: absolute; top: 100%; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(15px); flex-direction: column; padding: 20px 0; gap: 20px; border-bottom: 2px solid var(--primary); clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .desktop-menu.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            
+            .hero { padding: 140px 0 60px; }
+            .hero-text h1 { font-size: 2.4rem; }
+            .floating-wa { display: none; } /* Hide on mobile to prioritize sticky bar */
+            
+            /* Sticky Mobile CTA Bottom Bar */
+            .mobile-cta { position: fixed; bottom: 0; left: 0; width: 100%; display: flex; z-index: 1001; box-shadow: 0 -5px 25px rgba(0,0,0,0.15); }
+            .m-btn { flex: 1; padding: 16px 0; text-align: center; color: #fff; font-weight: 700; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; border-right: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; gap: 6px; }
+            .m-btn:last-child { border-right: none; }
+            .call { background: var(--primary); }
+            .wa { background: var(--wa-green); }
+            .mail { background: var(--dark); }
+            footer { padding-bottom: 90px; } 
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="glass-nav">
+    <nav class="glass-nav" id="navbar">
         <div class="container nav-flex">
-            <div class="logo">VSW<span>BUILDCON</span></div>
-            <ul class="desktop-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact" class="btn-outline">Inquiry</a></li>
+            <a href="#home" class="logo">VSW<span>BUILDCON</span></a>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="desktop-menu" id="nav-menu">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#projects">Our Projects</a></li>
+                <li><a href="tel:+919730368555" class="btn-outline">Call Us</a></li>
             </ul>
         </div>
     </nav>
@@ -23,44 +214,61 @@
     <section class="hero" id="home">
         <div class="container hero-grid">
             <div class="hero-text hidden-reveal">
-                <span class="badge">Estd. 2026</span>
-                <h1>Crafting Legacies, <br><span class="gradient-text">Building Tomorrow.</span></h1>
-                <p>We don't just hand over keys; we hand over a promise. Inspired by quality and transparency, VSW BUILDCON creates landmarks that redefine modern living.</p>
+                <span class="badge">A Legacy of Trust</span>
+                <h1>Building Dreams, <br><span class="gradient-text">Creating Reality.</span></h1>
+                <p>Welcome to VSW BUILDCON. We are committed to creating architectural marvels that elevate Indian lifestyles. With an unwavering focus on Vastu, quality, and modern innovation, we build homes that house happiness.</p>
                 <div class="btn-group">
-                    <a href="#projects" class="btn-vibrant">Explore Projects</a>
-                    <a href="mailto:rajat_rjt1@yahoo.com" class="btn-text">Email Inquiry &rarr;</a>
+                    <a href="#projects" class="btn-vibrant">Explore Portfolio</a>
+                    <a href="https://wa.me/919730368555" target="_blank" class="btn-vibrant btn-wa-hero">WhatsApp Us</a>
                 </div>
             </div>
-            <div class="hero-image-box hidden-reveal">
-                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=800&q=80" alt="Construction Excellence">
+            <div class="hero-image-box hidden-reveal stagger-1">
+                <!-- Beautiful modern Indian Villa/Apartment exterior -->
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80" alt="VSW Luxury Home Exterior">
             </div>
         </div>
     </section>
 
     <div class="marquee-container">
         <div class="marquee-content">
-            <span>🏙️ TALLEST CONSTRUCTION</span>
-            <span>💎 UNCOMPROMISED QUALITY</span>
-            <span>📍 PRIME LOCATIONS</span>
-            <span>🏗️ MODERN INFRASTRUCTURE</span>
-            <span>✅ RERA APPROVED</span>
-            <span>🏙️ TALLEST CONSTRUCTION</span>
-            <span>💎 UNCOMPROMISED QUALITY</span>
-            <span>📍 PRIME LOCATIONS</span>
+            <span><i>🏙️</i> PREMIUM RESIDENCES</span>
+            <span><i>💎</i> UNMATCHED QUALITY</span>
+            <span><i>📍</i> PRIME LOCATIONS</span>
+            <span><i>🏗️</i> MODERN COMMERCIAL SPACES</span>
+            <span><i>✅</i> RERA APPROVED</span>
+            <span><i>🏙️</i> PREMIUM RESIDENCES</span>
+            <span><i>💎</i> UNMATCHED QUALITY</span>
+            <span><i>📍</i> PRIME LOCATIONS</span>
         </div>
     </div>
 
     <section class="principles" id="about">
         <div class="container">
             <div class="section-header hidden-reveal">
-                <h2>Our Core Principles</h2>
-                <p>Discover the strengths that make us a trusted leader in construction.</p>
+                <h2>Our <span>Corporate Values</span></h2>
+                <p>Discover the foundational strengths that make us a trusted name in Indian real estate development and urban infrastructure.</p>
             </div>
             <div class="principles-grid">
-                <div class="p-card hidden-reveal"><h3>Passionate Commitment</h3><p>We don’t just build new homes; we build trust, relationships and peace of mind.</p></div>
-                <div class="p-card hidden-reveal"><h3>Impeccable Quality</h3><p>Each home we build goes through rigourous quality inspections.</p></div>
-                <div class="p-card hidden-reveal"><h3>Professionalism</h3><p>Our family takes care of your family—so you’re secure in your investment.</p></div>
-                <div class="p-card hidden-reveal"><h3>Timely Completion</h3><p>A major commitment to complete each project on schedule.</p></div>
+                <div class="p-card hidden-reveal">
+                    <div class="icon-wrapper">🤝</div>
+                    <h3>Customer First Approach</h3>
+                    <p>We don’t just build homes; we build relationships. Your family's needs, cultural values, and aspirations drive our innovations.</p>
+                </div>
+                <div class="p-card hidden-reveal stagger-1">
+                    <div class="icon-wrapper">🛡️</div>
+                    <h3>Unmatched Quality</h3>
+                    <p>Every square foot we develop undergoes rigorous quality control to ensure structural integrity and aesthetic perfection.</p>
+                </div>
+                <div class="p-card hidden-reveal stagger-2">
+                    <div class="icon-wrapper">⚖️</div>
+                    <h3>Transparency & Trust</h3>
+                    <p>We maintain absolute clarity in all paperwork and dealings, ensuring our clients feel completely secure in their investments.</p>
+                </div>
+                <div class="p-card hidden-reveal stagger-3">
+                    <div class="icon-wrapper">⏱️</div>
+                    <h3>On-Time Delivery</h3>
+                    <p>We respect your timeline. Our advanced project management ensures we hand over the keys safely and exactly on schedule.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -68,62 +276,235 @@
     <section class="projects" id="projects">
         <div class="container">
             <div class="section-header hidden-reveal">
-                <h2>Our Landmarks</h2>
+                <h2>Our <span>Signature Projects</span></h2>
+                <p>Explore our prestigious portfolio across highly sought-after residential and premium commercial sectors.</p>
             </div>
             <div class="project-grid">
+                
+                <!-- Project 1: Typical premium Indian high-rise apartment exterior -->
                 <div class="project-card hidden-reveal">
-                    <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?w=500&auto=format&fit=crop" alt="Spectrum 21">
-                    <div class="p-info"><h3>Spectrum 21</h3><p class="status uc">Under Construction</p><p class="specs">Flats: 2/3/4/5 BHK</p></div>
+                    <div class="card-img-wrapper">
+                        <span class="status uc">Under Construction</span>
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&auto=format&fit=crop" alt="Spectrum 21 Highrise">
+                    </div>
+                    <div class="p-info">
+                        <h3>Spectrum 21</h3>
+                        <p class="specs">Premium 2, 3 & 4 BHK Residences</p>
+                        <p class="desc">Featuring world-class clubhouses, Vastu-compliant layouts, and breathtaking views of the city skyline.</p>
+                        <a href="https://wa.me/919730368555?text=I am interested in Spectrum 21" target="_blank" class="card-btn">Inquire via WhatsApp <span>&rarr;</span></a>
+                    </div>
                 </div>
+
+                <!-- Project 2: Modern Glass IT Park/Commercial space -->
+                <div class="project-card hidden-reveal stagger-1">
+                    <div class="card-img-wrapper">
+                        <span class="status pr">Possession Ready</span>
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop" alt="The Index Commercial">
+                    </div>
+                    <div class="p-info">
+                        <h3>The Index</h3>
+                        <p class="specs">Commercial Hub & Retail Shops</p>
+                        <p class="desc">A modern business center offering high-visibility retail spaces and sophisticated corporate IT offices.</p>
+                        <a href="tel:+919730368555" class="card-btn">Call to Book Space <span>&rarr;</span></a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Warm, premium Indian apartment interior -->
+                <div class="project-card hidden-reveal stagger-2">
+                    <div class="card-img-wrapper">
+                        <span class="status c">Completed</span>
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&auto=format&fit=crop" alt="Alexa Homes Interior">
+                    </div>
+                    <div class="p-info">
+                        <h3>Alexa Homes</h3>
+                        <p class="specs">Luxury 1 & 2 BHK Apartments</p>
+                        <p class="desc">Elegantly designed interiors optimized for natural lighting, ventilation, and modern family living.</p>
+                        <a href="mailto:rajat_rjt1@yahoo.com?subject=Inquiry regarding Alexa Homes" class="card-btn">Request Brochure <span>&rarr;</span></a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Township/Mixed-use residential society -->
                 <div class="project-card hidden-reveal">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&auto=format&fit=crop" alt="The Index">
-                    <div class="p-info"><h3>The Index</h3><p class="status pr">Possession Ready</p><p class="specs">Apartments – Shops – Offices</p></div>
+                    <div class="card-img-wrapper">
+                        <span class="status c">Completed</span>
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&auto=format&fit=crop" alt="TheRise Township">
+                    </div>
+                    <div class="p-info">
+                        <h3>TheRise</h3>
+                        <p class="specs">Integrated Township</p>
+                        <p class="desc">A sprawling community blending residential tranquility with vibrant convenience shopping and parks.</p>
+                        <a href="tel:+919730368555" class="card-btn">Contact Sales <span>&rarr;</span></a>
+                    </div>
                 </div>
-                <div class="project-card hidden-reveal">
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=500&auto=format&fit=crop" alt="Alexa Homes">
-                    <div class="p-info"><h3>Alexa Homes</h3><p class="status c">Completed</p><p class="specs">Flats: 1/2/3 BHK</p></div>
+
+                <!-- Project 5: Beautiful Independent Duplex Villa -->
+                <div class="project-card hidden-reveal stagger-1">
+                    <div class="card-img-wrapper">
+                        <span class="status rm">Ready to Move In</span>
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&auto=format&fit=crop" alt="Aangan Villas">
+                    </div>
+                    <div class="p-info">
+                        <h3>Aangan Signature</h3>
+                        <p class="specs">Exclusive 3 & 4 BHK Duplex Villas</p>
+                        <p class="desc">Independent premium living set within a highly secure, beautifully landscaped gated community.</p>
+                        <a href="https://wa.me/919730368555?text=I am interested in Aangan Signature Villas" target="_blank" class="card-btn">Schedule a Visit <span>&rarr;</span></a>
+                    </div>
                 </div>
-                <div class="project-card hidden-reveal">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&auto=format&fit=crop" alt="TheRise">
-                    <div class="p-info"><h3>TheRise</h3><p class="status c">Completed</p><p class="specs">Apartments – Shops – Offices</p></div>
-                </div>
-                <div class="project-card hidden-reveal">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop" alt="Aangan">
-                    <div class="p-info"><h3>Aangan</h3><p class="status rm">Ready to Move In</p><p class="specs">Villas: 3 & 4BHK Duplex Villa</p></div>
-                </div>
+
             </div>
         </div>
     </section>
 
     <footer id="contact">
         <div class="container footer-grid-main">
-            <div class="footer-info">
-                <div class="logo">VSW<span>BUILDCON</span></div>
-                <p>Building the future with integrity.</p>
+            <div class="footer-info hidden-reveal">
+                <a href="#home" class="logo" style="color:#fff; text-decoration:none;">VSW<span style="color:var(--primary);">BUILDCON</span></a>
+                <p style="margin-top:20px;">Delivering true excellence in real estate. We are dedicated to building sustainable, luxurious communities that stand the test of time for generations to come.</p>
             </div>
-            <div class="contact-form-box">
-                <h4>Send Inquiry</h4>
+            
+            <div class="contact-form-box hidden-reveal stagger-1">
+                <h4>Request a Callback</h4>
                 <form id="inquiryForm">
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <input type="email" id="email" placeholder="Your Email" required>
-                    <textarea id="message" placeholder="Message" required></textarea>
-                    <button type="submit" class="btn-vibrant">Send Lead</button>
-                    <div id="formStatus"></div>
+                    <input type="text" id="name" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <textarea id="message" placeholder="Which project are you interested in?" required></textarea>
+                    <button type="submit" id="submitBtn" class="btn-vibrant" style="width: 100%; border:none;">Submit Inquiry</button>
+                    <div id="formStatus" class="form-status"></div>
                 </form>
             </div>
-            <div class="quick-contact">
-                <h4>Contact Us</h4>
-                <a href="tel:9730368555" class="contact-link">📞 Call: 9730368555</a>
-                <a href="mailto:rajat_rjt1@yahoo.com" class="contact-link">✉️ Email: rajat_rjt1@yahoo.com</a>
+            
+            <div class="quick-contact hidden-reveal stagger-2">
+                <h4>Get in Touch</h4>
+                <a href="tel:+919730368555" class="contact-link">
+                    <div>📞</div> 
+                    <span>+91 97303 68555</span>
+                </a>
+                <a href="https://wa.me/919730368555" target="_blank" class="contact-link">
+                    <div style="color: var(--wa-green);">💬</div> 
+                    <span>WhatsApp Us</span>
+                </a>
+                <a href="mailto:rajat_rjt1@yahoo.com" class="contact-link">
+                    <div>✉️</div> 
+                    <span>rajat_rjt1@yahoo.com</span>
+                </a>
+                <div style="margin-top: 25px; color: #a0aec0; font-size: 0.95rem; line-height: 1.6;">
+                    📍 <strong>Corporate Office:</strong><br>
+                    Level 4, Business Bay,<br>
+                    Nagpur, Maharashtra, 440001
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright hidden-reveal">
+                &copy; 2026 VSW BUILDCON PVT LTD. All Rights Reserved.
             </div>
         </div>
     </footer>
 
+    <!-- Floating WhatsApp Button (Desktop) -->
+    <a href="https://wa.me/919730368555" target="_blank" class="floating-wa" title="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- Mobile Sticky Action Buttons -->
     <div class="mobile-cta">
-        <a href="tel:9730368555" class="m-btn call">Call Now</a>
-        <a href="mailto:rajat_rjt1@yahoo.com" class="m-btn mail">Inquiry</a>
+        <a href="tel:+919730368555" class="m-btn call">📞 Call Now</a>
+        <a href="https://wa.me/919730368555" target="_blank" class="m-btn wa">💬 WhatsApp</a>
+        <a href="mailto:rajat_rjt1@yahoo.com" class="m-btn mail">✉️ Email Us</a>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Hamburger Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.desktop-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // 2. Navbar Shrink Animation
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 3. Scroll-Reveal Animations (Intersection Observer)
+            const reveals = document.querySelectorAll('.hidden-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show-reveal');
+                        // Optional: Unobserve after revealing to only animate once
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }); 
+
+            reveals.forEach(el => observer.observe(el));
+
+            // 4. Inquiry Form AJAX Submission
+            const form = document.getElementById('inquiryForm');
+            const status = document.getElementById('formStatus');
+            const submitBtn = document.getElementById('submitBtn');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.innerText = 'Transmitting...';
+                submitBtn.disabled = true;
+                
+                status.className = 'form-status'; 
+                status.style.display = 'none';
+
+                const data = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                };
+
+                try {
+                    const response = await fetch('/api/inquiry/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.text();
+                    
+                    status.style.display = 'block';
+                    if (result === 'success') {
+                        status.classList.add('success');
+                        status.textContent = 'Thank you! Your inquiry has been sent successfully. We will reach out shortly.';
+                        form.reset();
+                    } else {
+                        status.classList.add('error');
+                        status.textContent = 'Error: ' + result;
+                    }
+                } catch (error) {
+                    status.style.display = 'block';
+                    status.classList.add('error');
+                    status.textContent = 'Submission failed. Please use the WhatsApp or Call buttons to reach us directly.';
+                    console.error('Submission Error:', error);
+                } finally {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
