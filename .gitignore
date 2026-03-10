@@ -1,0 +1,22 @@
+# Compiled source #
+target/
+*.class
+
+# Log files #
+*.log
+
+# Package files #
+*.jar
+*.war
+*.ear
+
+# Virtual folders #
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Secrets & Environment configs #
+application.properties  # Keep example values, but ignore real credentials in EC2 env
+.env

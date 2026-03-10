@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSW BUILDCON PVT LTD | Building Tomorrow's Landmarks</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="glass-nav">
+        <div class="container nav-flex">
+            <div class="logo">VSW<span>BUILDCON</span></div>
+            <ul class="desktop-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact" class="btn-outline">Inquiry</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-text hidden-reveal">
+                <span class="badge">Estd. 2026</span>
+                <h1>Crafting Legacies, <br><span class="gradient-text">Building Tomorrow.</span></h1>
+                <p>We don't just hand over keys; we hand over a promise. Inspired by quality and transparency, VSW BUILDCON creates landmarks that redefine modern living.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="btn-vibrant">Explore Projects</a>
+                    <a href="mailto:rajat_rjt1@yahoo.com" class="btn-text">Email Inquiry &rarr;</a>
+                </div>
+            </div>
+            <div class="hero-image-box hidden-reveal">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=800&q=80" alt="Construction Excellence">
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span>🏙️ TALLEST CONSTRUCTION</span>
+            <span>💎 UNCOMPROMISED QUALITY</span>
+            <span>📍 PRIME LOCATIONS</span>
+            <span>🏗️ MODERN INFRASTRUCTURE</span>
+            <span>✅ RERA APPROVED</span>
+            <span>🏙️ TALLEST CONSTRUCTION</span>
+            <span>💎 UNCOMPROMISED QUALITY</span>
+            <span>📍 PRIME LOCATIONS</span>
+        </div>
+    </div>
+
+    <section class="principles" id="about">
+        <div class="container">
+            <div class="section-header hidden-reveal">
+                <h2>Our Core Principles</h2>
+                <p>Discover the strengths that make us a trusted leader in construction.</p>
+            </div>
+            <div class="principles-grid">
+                <div class="p-card hidden-reveal"><h3>Passionate Commitment</h3><p>We don’t just build new homes; we build trust, relationships and peace of mind.</p></div>
+                <div class="p-card hidden-reveal"><h3>Impeccable Quality</h3><p>Each home we build goes through rigourous quality inspections.</p></div>
+                <div class="p-card hidden-reveal"><h3>Professionalism</h3><p>Our family takes care of your family—so you’re secure in your investment.</p></div>
+                <div class="p-card hidden-reveal"><h3>Timely Completion</h3><p>A major commitment to complete each project on schedule.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header hidden-reveal">
+                <h2>Our Landmarks</h2>
+            </div>
+            <div class="project-grid">
+                <div class="project-card hidden-reveal">
+                    <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?w=500&auto=format&fit=crop" alt="Spectrum 21">
+                    <div class="p-info"><h3>Spectrum 21</h3><p class="status uc">Under Construction</p><p class="specs">Flats: 2/3/4/5 BHK</p></div>
+                </div>
+                <div class="project-card hidden-reveal">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&auto=format&fit=crop" alt="The Index">
+                    <div class="p-info"><h3>The Index</h3><p class="status pr">Possession Ready</p><p class="specs">Apartments – Shops – Offices</p></div>
+                </div>
+                <div class="project-card hidden-reveal">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=500&auto=format&fit=crop" alt="Alexa Homes">
+                    <div class="p-info"><h3>Alexa Homes</h3><p class="status c">Completed</p><p class="specs">Flats: 1/2/3 BHK</p></div>
+                </div>
+                <div class="project-card hidden-reveal">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&auto=format&fit=crop" alt="TheRise">
+                    <div class="p-info"><h3>TheRise</h3><p class="status c">Completed</p><p class="specs">Apartments – Shops – Offices</p></div>
+                </div>
+                <div class="project-card hidden-reveal">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop" alt="Aangan">
+                    <div class="p-info"><h3>Aangan</h3><p class="status rm">Ready to Move In</p><p class="specs">Villas: 3 & 4BHK Duplex Villa</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-grid-main">
+            <div class="footer-info">
+                <div class="logo">VSW<span>BUILDCON</span></div>
+                <p>Building the future with integrity.</p>
+            </div>
+            <div class="contact-form-box">
+                <h4>Send Inquiry</h4>
+                <form id="inquiryForm">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" placeholder="Message" required></textarea>
+                    <button type="submit" class="btn-vibrant">Send Lead</button>
+                    <div id="formStatus"></div>
+                </form>
+            </div>
+            <div class="quick-contact">
+                <h4>Contact Us</h4>
+                <a href="tel:9730368555" class="contact-link">📞 Call: 9730368555</a>
+                <a href="mailto:rajat_rjt1@yahoo.com" class="contact-link">✉️ Email: rajat_rjt1@yahoo.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-cta">
+        <a href="tel:9730368555" class="m-btn call">Call Now</a>
+        <a href="mailto:rajat_rjt1@yahoo.com" class="m-btn mail">Inquiry</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
