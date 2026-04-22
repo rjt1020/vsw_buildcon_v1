@@ -14,14 +14,12 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    // Recipient address for Admin notifications
-    private static final String ADMIN_EMAIL = "contact@2b1.co.in"; // Reusing your existing administrative email
+    // [UPDATED] Recipient address for Admin notifications
+    private static final String ADMIN_EMAIL = "vishalwadibhasme@gmail.com"; 
 
     public void processInquiry(Inquiry inquiry) throws MessagingException {
         
-        // 1. (Optional) Save to Database using a Repository. (Skipped for brevity, but model is provided).
-
-        // 2. Automated Admin Notification
+        // 1. Automated Admin Notification (Sent to vishalwadibhasme@gmail.com)
         MimeMessage adminMessage = mailSender.createMimeMessage();
         MimeMessageHelper adminHelper = new MimeMessageHelper(adminMessage, true);
         adminHelper.setTo(ADMIN_EMAIL);
@@ -29,7 +27,7 @@ public class EmailService {
         adminHelper.setText("Contact Details:\nEmail: " + inquiry.getEmail() + "\nMessage: " + inquiry.getMessage(), true);
         mailSender.send(adminMessage);
 
-        // 3. Automated Customer Thank You (Instant lead nurture)
+        // 2. Automated Customer Thank You
         MimeMessage customerMessage = mailSender.createMimeMessage();
         MimeMessageHelper customerHelper = new MimeMessageHelper(customerMessage, true);
         customerHelper.setTo(inquiry.getEmail());
